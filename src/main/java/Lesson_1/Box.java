@@ -1,22 +1,43 @@
 package Lesson_1;
 
-public class Box {
+class Box {
 
     private Object obj;
 
-    public Box(Object obj) {
+    Box(Object obj) {
         this.obj = obj;
     }
 
-    public Object getObj() {
+    Object getObj() {
         return obj;
     }
 
-    public void setObj(Object obj) {
+    void setObj(Object obj) {
         this.obj = obj;
     }
 
-    public void info(){
+    void info(){
+        System.out.println("Object: " + obj);
+        System.out.println("Type: " + obj.getClass());
+    }
+}
+
+class BoxUltimate<T> {
+    private T obj;
+
+    BoxUltimate(T obj) {
+        this.obj = obj;
+    }
+
+    T getObj() {
+        return obj;
+    }
+
+    void setObj(T obj) {
+        this.obj = obj;
+    }
+
+    void info() {
         System.out.println("Object: " + obj);
         System.out.println("Type: " + obj.getClass());
     }
