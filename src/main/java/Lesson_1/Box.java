@@ -88,19 +88,19 @@ class Stats <T extends Number> {
 }
 
 class Main {
-    public static void main(String[] args) {
-
-        Integer[] imass = {1,2,3,4,6};
-        Double[] dmass = {1.0,2.0,3.0,5.0,6.0};
-
-        Stats<Integer> iStats = new Stats<Integer>(imass);
-        Stats<Double> dStats = new Stats<Double>(dmass);
-
-        if(iStats.sameAvg(dStats)) {
-            System.out.println("Average values are equal.");
-        } else {
-            System.out.println("Average values are not equal.");
-        }
+//    public static void main(String[] args) {
+//
+//        Integer[] imass = {1,2,3,4,6};
+//        Double[] dmass = {1.0,2.0,3.0,5.0,6.0};
+//
+//        Stats<Integer> iStats = new Stats<Integer>(imass);
+//        Stats<Double> dStats = new Stats<Double>(dmass);
+//
+//        if(iStats.sameAvg(dStats)) {
+//            System.out.println("Average values are equal.");
+//        } else {
+//            System.out.println("Average values are not equal.");
+//        }
 
 //        String[] imass = {"","2","3.0","4.0","5.0"};
 //        Stats<String> iStats = new Stats<>(imass);
@@ -146,6 +146,6 @@ class Main {
 //        if (bint instanceof  BoxUltimate) {
 //            System.out.println(2);
 //        }
-    }
+//    }
 }
 
