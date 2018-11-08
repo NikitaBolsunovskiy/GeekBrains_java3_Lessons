@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.sql.SQLException;
 
 public class ClientHandler {
     private Server server;
@@ -11,6 +12,7 @@ public class ClientHandler {
     private DataOutputStream out;
     private DataInputStream in;
     String nick;
+    String userID;
 
     public ClientHandler(Server server, Socket socket) {
         try {
@@ -24,7 +26,7 @@ public class ClientHandler {
                         String str = in.readUTF();
                         if(str.startsWith("/auth")) {
                             String[] tokens = str.split(" ");
-                            String newNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
+                            String newNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2],this);
 
                             if(newNick != null) {
                                 sendMsg("/authok");
@@ -41,6 +43,15 @@ public class ClientHandler {
                         if (str.equals("/end")) {
                             out.writeUTF("/serverclosed");
                             break;
+                        } else if (str.startsWith("/changenick")){
+                            String[] tokens = str.split(" ");
+                            try{
+                                AuthService.changeClientNick(tokens[1], this) ;
+                                sendMsg("Успешно сменили NickName на " + tokens[1]);
+
+                            } catch(SQLException e){
+                                e.printStackTrace();
+                            }
                         }
                         server.broadcastMsg(nick + " " + str);
                         System.out.println("Client: " + str);
