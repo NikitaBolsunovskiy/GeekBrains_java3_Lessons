@@ -52,4 +52,33 @@ public class AuthService {
             e.printStackTrace();
         }
     }
+
+    public static void saveHistory(String s) {
+
+        String sql = String.format("INSERT INTO \"chatHistory\" (\"fullMessage\") VALUES ('%s')", s);
+        try {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public static String getChatHistory() {
+
+        String sql = "select fullMessage FROM chatHistory";
+        String result = "";
+        try {
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                result = result +"\n" + rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
+
+//https://github.com/NikitaBolsunovskiy/GeekBrains_java3_Lessons/pull/2

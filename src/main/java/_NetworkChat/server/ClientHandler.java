@@ -32,6 +32,8 @@ public class ClientHandler {
                                 sendMsg("/authok");
                                 nick = newNick;
                                 server.subscribe(this);
+                                sendMsg(AuthService.getChatHistory());
+                                sendMsg("История чата окончена.");
                                 break;
                             } else {
                                 sendMsg("Неверный логин/пароль");
@@ -54,6 +56,7 @@ public class ClientHandler {
                             }
                         }
                         server.broadcastMsg(nick + " " + str);
+                        AuthService.saveHistory(nick + " " + str);
                         System.out.println("Client: " + str);
                     }
                 } catch (IOException e) {
