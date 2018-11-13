@@ -6,9 +6,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 public class Controller {
@@ -94,7 +92,8 @@ public class Controller {
 
     public void sendMsg() {
         try {
-            out.writeUTF(msgField.getText());
+            String str = msgField.getText();
+            out.writeUTF(str);
             msgField.clear();
             msgField.requestFocus();
         } catch (IOException e) {
@@ -111,6 +110,5 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
