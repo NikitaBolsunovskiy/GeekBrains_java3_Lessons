@@ -2,6 +2,8 @@ package Lesson_4_homework;
 
 public class Main {
 
+    static volatile char currentLetter; // volatile - переменная, обращений к котрой проходит черех главную память, не используется локальный кещ потока...
+
     public static void main(String[] args) {
 
         //1. Создать три потока, каждый из которых выводит определенную букву (A, B и C) 5 раз (порядок – ABСABСABС). Используйте wait/notify/notifyAll.
