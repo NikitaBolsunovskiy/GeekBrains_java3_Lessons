@@ -2,11 +2,13 @@ import Lesson_6_homework.MainHome6;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
 
+@RunWith(Parameterized.class)
 public class CheckOneFourTest {
 
     @Parameterized.Parameters
