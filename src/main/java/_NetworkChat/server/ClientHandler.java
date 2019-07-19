@@ -30,6 +30,7 @@ public class ClientHandler {
 
                             if(newNick != null) {
                                 sendMsg("/authok");
+                                Server.logger.info("Авторизован клиент с ником: " + newNick);
                                 nick = newNick;
                                 server.subscribe(this);
                                 sendMsg(AuthService.getChatHistory());
@@ -50,7 +51,7 @@ public class ClientHandler {
                             try{
                                 AuthService.changeClientNick(tokens[1], this) ;
                                 sendMsg("Успешно сменили NickName на " + tokens[1]);
-
+                                Server.logger.info("Авторизован клиент с ником: " + tokens[1]);
                             } catch(SQLException e){
                                 e.printStackTrace();
                             }

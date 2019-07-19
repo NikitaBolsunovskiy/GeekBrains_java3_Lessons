@@ -1,5 +1,7 @@
 package _NetworkChat.server;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,6 +11,7 @@ import java.util.Vector;
 
 public class Server {
     private Vector<ClientHandler> clients;
+    static final Logger logger = Logger.getLogger(ru.gb.MainClass.class.getName());
 
     public Server() throws SQLException {
         clients = new Vector<>();
@@ -18,10 +21,14 @@ public class Server {
             AuthService.connect();
             server = new ServerSocket(8189);
             System.out.println("Сервер запущен. Ожидаем клиентов...");
+
+            logger.info("Сервер запущен. Ожидаем клиентов...");
+
             while (true) {
                 socket = server.accept();
                 System.out.println("Клиент подключился");
-                 new ClientHandler(this, socket);
+                logger.info("Подключен клиент.");
+                new ClientHandler(this, socket);
                // clients.add(new ClientHandler(this, socket));
             }
         } catch (IOException e) {
